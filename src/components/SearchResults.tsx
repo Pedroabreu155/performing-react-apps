@@ -8,9 +8,10 @@ type SearchResultsProps = {
     price: number;
     title: string;
   }>;
+  addToList: (id: number) => void;
 };
 
-export function SearchResults({ results }: SearchResultsProps) {
+export function SearchResults({ results, addToList }: SearchResultsProps) {
   const totalPrice = useMemo(() => {
     return results.reduce((total, product) => {
       return total + product.price;
@@ -22,7 +23,11 @@ export function SearchResults({ results }: SearchResultsProps) {
       <h2>Total: {totalPrice}</h2>
       <div>
         {results.map((product) => (
-          <ProductItem key={product.id} product={product} />
+          <ProductItem
+            addToList={addToList}
+            key={product.id}
+            product={product}
+          />
         ))}
       </div>
     </>

@@ -6,12 +6,16 @@ type ProductItemProps = {
     price: number;
     title: string;
   };
+  addToList: (id: number) => void;
 };
 
-function ProductItemComponent({ product }: ProductItemProps) {
+function ProductItemComponent({ product, addToList }: ProductItemProps) {
   return (
     <div>
       {product.title} - <strong>{product.price}</strong>
+      <button type="button" onClick={() => addToList(product.id)}>
+        Add to list
+      </button>
     </div>
   );
 }
