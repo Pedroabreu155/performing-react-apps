@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { List, ListRowRenderer } from 'react-virtualized';
 
 import { ProductItem } from './ProductItem';
 
@@ -18,17 +19,26 @@ export function SearchResults({ results, addToList }: SearchResultsProps) {
     }, 0);
   }, [results]);
 
+  const rowRenderer: ListRowRenderer = ({ index, key, style }) => {
+    return (
+      <div key={key} style={style}>
+        <ProductItem addToList={addToList} product={results[index]} />
+      </div>
+    );
+  };
+
   return (
     <>
       <h2>Total: {totalPrice}</h2>
       <div>
-        {results.map((product) => (
-          <ProductItem
-            addToList={addToList}
-            key={product.id}
-            product={product}
-          />
-        ))}
+        <List
+          height={300}
+          rowHeight={30}
+          width={900}
+          overscanRowCount={5}
+          rowCount={results.length}
+          rowRenderer={rowRenderer}
+        />
       </div>
     </>
   );

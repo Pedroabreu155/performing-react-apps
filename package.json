@@ -12,11 +12,13 @@
   "dependencies": {
     "next": "11.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-virtualized": "^9.22.3"
   },
   "devDependencies": {
     "@types/node": "^16.7.1",
     "@types/react": "^17.0.19",
+    "@types/react-virtualized": "^9.21.13",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
     "json-server": "^0.16.3",
